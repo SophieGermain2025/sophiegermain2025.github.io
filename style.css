@@ -10,14 +10,15 @@ nav{
   position: fixed;
   z-index: 99;
   width: 100%;
-  background: linear-gradient(to left, #c28e00, #7f5d00);
+  background: linear-gradient(to left, rgba(83, 0, 127, 0.85), rgba(194, 142, 0, 0.85), rgba(127, 32, 0, 0.85));
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect to content beneath */
 }
 
 nav .wrapper {
   position: relative;
   max-width: 1300px;
   padding: 0px 30px;
-  height: 70px;
+  height: 50px;
   line-height: 70px;
   margin: auto;
   display: flex;
@@ -27,7 +28,7 @@ nav .wrapper {
 
 .navbar-left img,
 .navbar-right img {
-  height: 60px; 
+  height: 40px; 
 }
 
 .wrapper .nueve a{
@@ -37,52 +38,88 @@ nav .wrapper {
   text-decoration: none;
 }
 
-body{
-    background-color: #cf98017f;
+body {
+  background: linear-gradient(-30deg, #8e00e0, #8e00e0, #8e00e0,  #ebc507df,#ebc507df, #dc0606, #dc0606, #dc0606);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
-.body-text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  padding: 0 30px;
-}
-.body-text div{
-  font-size: 45px;
-  font-weight: 600;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.container {
+/* Nouvelle structure : top-container affichant image et vidéo côte à côte */
+.top-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 70% 30%; /* 70% for video and 30% for image */
   gap: 20px;
 }
 
 .video-container {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  position: relative;
   width: 100%;
-  aspect-ratio: 16/9; /* Maintain 16:9 aspect ratio */
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  overflow: hidden;
 }
 
+/* Add this new rule for the iframe */
 .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
 }
 
+.image-container {
+  grid-column: 2 / 3;
+  grid-row: 1;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 131.35%; /* Same aspect ratio as video */
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Ensures image starts from the top */
+}
+
+/* Texte à afficher sous la vidéo sur 90% de la largeur */
 .text-container {
+  width: 90%;
+  margin: 20px auto;
   background: #cf98017f;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
+  color: white;
 }
 
 h6 {

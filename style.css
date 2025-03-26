@@ -62,20 +62,33 @@ body {
   }
 }
 
-html {
-  height: -webkit-fill-available;
-}
-
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Add responsive padding to ensure content doesn't touch edges on mobile */
 @media (max-width: 768px) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-top: env(safe-area-inset-top, 0);
+    height: -webkit-fill-available;
+    background-attachment: fixed;
+  }
+  
+  body {
+    padding-top: 60px;
+  }
+  
   .top-container, .text-container {
     width: 95%;
     padding: 10px 5px;
+    margin-bottom: 20px;
   }
   
   nav .wrapper {

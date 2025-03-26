@@ -43,6 +43,10 @@ body {
   background-size: 400% 400%; 
 
   animation: gradient 15s ease infinite;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 
 }
 
@@ -58,6 +62,26 @@ body {
   }
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Add responsive padding to ensure content doesn't touch edges on mobile */
+@media (max-width: 768px) {
+  .top-container, .text-container {
+    width: 95%;
+    padding: 10px 5px;
+  }
+  
+  nav .wrapper {
+    padding: 0px 15px;
+  }
+}
 
 .top-container {
   width: 90%;
